@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: after finding out that sort2 is merge sort, I ran sorted50000.txt on both sort1 and sort 3. sort1 immediately sorted this sorted configuration but sort3 still took some time. this implies that sort1 has short-circuited and returned the sorted array immediately and is bubble sort.
+
+sort2 uses: merge sort
+
+How do you know?: Running random50000.txt on all sorts, this sort took the lowest amount of time by far at 3.402s. Merge sort has the lowest runtime of all 3, so this is merge sort.
+
+sort3 uses: selection sort
+
+How do you know?: despite given a sorted array, it still went through the entire process as if it weren't sorted, implying no short circuiting happened and this is selection sort.
