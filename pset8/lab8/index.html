@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+            // Wait for load
+            document.addEventListener('DOMContentLoaded', () => {
+                // Loaded. Execute script.
+                // select all buttons
+                loadButtons();
+                loadOpenEnded();
+            });
+
+            function loadButtons() {
+                const buttons = document.querySelectorAll('.buttonMCQ');
+                // add the functions to each of the buttons
+                for (const button of buttons) {
+                    // check if the button is correct or wrong
+                    let colour;
+                    let text;
+                    const isCorrect = button.classList.contains('correct');
+                    if (isCorrect) {
+                        colour = "#00FF00";
+                        text = `${button.innerHTML} is correct!`;
+                    } else {
+                        colour = "#FF0000";
+                        text = `${button.innerHTML} is incorrect.`;
+                    }
+                    // On click, do something.
+                    button.addEventListener('click', () => {
+                        // reset all button colours
+                        buttons.forEach(button => button.style.backgroundColor = "#d9edff");
+                        // change the button's colour.
+                        button.style.backgroundColor = colour;
+                        // add feedback
+                        let feedback = document.getElementById('MCQFeedback');
+                        feedback.innerHTML = text;
+                    });
+                }
+            }
+
+            function loadOpenEnded() {
+                // find the button
+                const form = document.getElementById('buttonOpenEnded');
+                form.addEventListener('click', () => {
+                    // get the user's answer
+                    const answer = document.getElementById('openEndedAnswer').value;
+                    let colour;
+                    let text;
+                    if (answer == "1965") {
+                        colour = "#00FF00";
+                        text = `${answer} is correct!`;
+                    } else {
+                        colour = "#FF0000";
+                        text = `${answer} is incorrect.`;
+                    }
+                    // change input field colour
+                    let inputField = document.getElementById("openEndedAnswer");
+                    inputField.style.backgroundColor = colour;
+                    // add feedback
+                    let feedback = document.getElementById("freeResponseFeedback");
+                    feedback.innerHTML = text;
+                });
+            }
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Which one of the following note denominations is currently not in production in Singapore?</h3>
+                <!--HTML to put the feedback of the answer in-->
+                <p id="MCQFeedback">Waiting for answer...</p>
+                <button class="buttonMCQ correct">$1</button>
+                <button class="buttonMCQ wrong">$2</button>
+                <button class="buttonMCQ wrong">$5</button>
+                <button class="buttonMCQ wrong">$10</button>
+                <button class="buttonMCQ wrong">$50</button>
+                <button class="buttonMCQ wrong">$100</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+                <h3>When did Singapore gain independence?</h3>
+                <!-- HTML to put the feedback of the answer in-->
+                <p id="freeResponseFeedback">Waiting for answer...</p>
+                <form id="openEndedForm">
+                    <input type="text" autocomplete="off" placeholder="YYYY" id="openEndedAnswer">
+                    <!-- type button to stop form from refreshing. 'return false;' would've done the same-->
+                    <button type="button" id="buttonOpenEnded">Submit</button>
+                </form>
+            </div>
+
+        </div>
+    </body>
+</html>

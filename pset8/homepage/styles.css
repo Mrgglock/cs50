@@ -1,0 +1,37 @@
+.monospace {
+    font-family:'Lucida Console', monospace;
+}
+
+.center {
+  text-align: center;
+}
+
+#topBar {
+    word-spacing: 40px;
+}
+
+#box {
+    background-color: lightgrey;
+    width: 300px;
+    padding: 50px;
+    margin: 20px;
+}
+
+#form {
+    padding-left: 50px;
+    font-size: large;
+}
+
+figure{
+    display: inline-block;
+}
+
+#bukitPurmei {
+    height: auto;
+    width: 20%;
+}
+
+#terminal {
+    height: auto;
+    width: 20%;
+}

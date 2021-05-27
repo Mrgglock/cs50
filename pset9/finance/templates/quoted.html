@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    {% if response is none %}
+        No stock with "{{ search }}" was found in the database.
+    {% else %}
+        A share of {{ response["name"] }} ({{ response["symbol"] }}) costs {{ response["price"] | usd }}.
+    {% endif %}
+{% endblock %}

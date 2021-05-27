@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    {% if stocks|length == 0%}
+        You do not own any stocks!
+    {% else %}
+        <form action="/sell" method="post">
+            <div class="form-group">
+                <select name="symbol">
+                    <option value="" selected disabled hidden>Symbol</option>
+                {% for stock in stocks %}
+                    <option value="{{ stock["symbol"] }}">{{ stock["symbol"] }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" class="form-control" name="shares" placeholder="Number" type="number">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Sell</button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
